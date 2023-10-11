@@ -1,0 +1,19 @@
+def removeKthNode(head, k):
+    length = 0
+    curr = head
+    while curr:
+        curr = curr.next
+        length += 1
+
+    N = length - k
+    curr = head
+    if k == length:
+        return head.next
+        
+    else:
+        for i in range(N - 1):
+            curr = curr.next
+
+        curr.next = curr.next.next
+
+        return head
