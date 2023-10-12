@@ -1,0 +1,21 @@
+      
+def sortTwoLists(first, second):
+    dummy = Node(0) 
+    tail = dummy
+    
+    while first and second:
+        if first.data <= second.data:
+            tail.next = first
+            first = first.next
+        else:
+            tail.next = second
+            second = second.next
+            
+        tail = tail.next
+
+    if first:
+        tail.next = first
+    if second:
+        tail.next = second
+    
+    return dummy.next  
