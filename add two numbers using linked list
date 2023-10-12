@@ -1,0 +1,19 @@
+def addTwoNumbers(head1: Node, head2: Node) -> Node:
+    def recursive_add(head1, head2, carry):
+        if not head1 and not head2 and carry == 0:
+            return None
+
+        v1 = head1.data if head1 else 0
+        v2 = head2.data if head2 else 0
+
+        total = v1 + v2 + carry
+        carry = total // 10
+        new_node = Node(total % 10)
+
+        head1 = head1.next if head1 else None
+        head2 = head2.next if head2 else None
+
+        new_node.next = recursive_add(head1, head2, carry)
+        return new_node
+
+    return recursive_add(head1, head2, 0)
