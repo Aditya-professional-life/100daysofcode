@@ -1,0 +1,18 @@
+def firstNode(head):
+    # Write your code here
+    slow = head
+    fast = head
+    cycle = False
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+        if fast == slow:
+            cycle = True
+            break        
+    if cycle == False:
+        return None
+    fast = head
+    while slow!=fast:
+        fast = fast.next
+        slow = slow.next
+    return slow
