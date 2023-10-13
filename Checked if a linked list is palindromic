@@ -1,0 +1,29 @@
+            
+def isPalindrome(head):
+    if not head or not head.next:
+        return True
+
+    slow = fast = head
+    prev = None
+
+    while fast and fast.next:
+        fast = fast.next.next
+        slow_next = slow.next
+        slow.next, prev, slow = prev, slow, slow_next
+
+    left = prev
+    right = slow if not fast else slow.next
+
+    while left and right:
+        if left.data != right.data:
+            return False
+        left = left.next
+        right = right.next
+
+    return True
+
+    
+    
+    
+    
+    
