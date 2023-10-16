@@ -1,0 +1,21 @@
+def isBalancedBT(root: BinaryTreeNode) -> bool:
+    # Write your code here.
+    if dfs_height(root) == -1:
+        return  False
+    else:
+        return True
+
+def dfs_height(root):
+    if root == None:
+        return 0
+    lh = dfs_height(root.left)
+    if lh == -1:
+        return -1
+    rh = dfs_height(root.right)
+    if rh == -1:
+        return -1
+    if (abs(lh -rh)>1):
+        return -1
+    else:
+        return max(lh,rh)+1
+    
