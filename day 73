@@ -1,0 +1,41 @@
+#User function Template for python3
+
+class Solution:
+    def recamanSequence(self, n):
+        # code here
+        
+        sequence = [0] * n
+        seen = set() 
+        sequence[0] = 0
+    
+        for i in range(1, n):
+            prev_term = sequence[i - 1]
+            candidate1 = prev_term - i
+            candidate2 = prev_term + i
+    
+            
+            if candidate1 > 0 and candidate1 not in seen:
+                sequence[i] = candidate1
+                seen.add(candidate1)
+            else:
+                sequence[i] = candidate2
+                seen.add(candidate2)
+    
+        return sequence
+
+
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        
+        ob = Solution()
+        ans = ob.recamanSequence(n)
+        for i in range(n):
+            print(ans[i],end=" ")
+        print()
+# } Driver Code Ends
