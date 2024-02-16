@@ -1,0 +1,24 @@
+import heapq
+from typing import List
+
+class Solution:
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        freq = {}
+        for num in arr:
+            if num in freq:
+                freq[num] += 1
+            else:
+                freq[num] = 1
+        
+        heap = list(freq.values())
+        heapq.heapify(heap)
+
+        res = len(heap)
+        
+        while k > 0 and heap:
+            f = heapq.heappop(heap)
+            if k >= f:
+                k -= f
+                res -= 1
+        
+        return res
