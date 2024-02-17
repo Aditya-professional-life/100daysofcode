@@ -1,0 +1,38 @@
+
+class Solution:
+    def isMaxHeap(self,arr,n):
+        
+        ans = False
+        i = 0
+        left = 1
+        right = 2
+        
+        while left < n:
+            if right < n and arr[left] <= arr[i] and arr[right] <= arr[i]:
+                ans = True
+            elif right >= n and arr[left] <= arr[i]:
+                ans = True
+            else:
+                ans = False
+                break
+            
+            i += 1
+            left = 2 * i + 1
+            right = 2 * i + 2
+        
+        return ans
+
+     
+
+
+
+#{ 
+ # Driver Code Starts
+if __name__ =='__main__':
+    t= int(input())
+    for tcs in range(t):
+        n=int(input())
+        arr=[int(x) for x in input().split()]
+        ob=Solution()
+        print(int(ob.isMaxHeap(arr,n)))
+# } Driver Code Ends
